@@ -1,12 +1,11 @@
-'use client';
-
 import { useState } from 'react';
+import type { NextPage } from 'next';
 import { useWallet } from '@meshsdk/react';
 import { CardanoWallet } from '@meshsdk/react';
 
-export default function Home() {
+const Home: NextPage = () => {
     const { connected, wallet } = useWallet();
-    const [assets, setAssets] = useState<null | unknown>(null);
+    const [assets, setAssets] = useState<null | any>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
     async function getAssets() {
@@ -17,6 +16,7 @@ export default function Home() {
             setLoading(false);
         }
     }
+
     return (
         <div>
             <h1>Connect Wallet</h1>
@@ -47,4 +47,6 @@ export default function Home() {
             )}
         </div>
     );
-}
+};
+
+export default Home;
